@@ -8,7 +8,15 @@ public class Videojuego {
     private int anio;
     private int valoracion;
 
-    //Constructor con TODOS los parametros para cuando se lee de la Base de Datos.
+    /**
+     *
+     * @param id Identificador único
+     * @param titulo Titulo del juego
+     * @param genero Género del juego
+     * @param plataforma Plataforma en la que esta disponible el juego
+     * @param anio Año de lanzamiento del juego
+     * @param valoracion Valoracion del 1 al 10
+     */
     public Videojuego(int id, String titulo, String genero, String plataforma, int anio, int valoracion) {
         this.id = id;
         this.titulo = titulo;
