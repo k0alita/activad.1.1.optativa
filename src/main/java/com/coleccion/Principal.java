@@ -1,6 +1,8 @@
 package com.coleccion;
 
 
+import com.coleccion.model.VideojuegoDAO;
+
 import java.util.Scanner;
 
 public class Principal {
@@ -23,6 +25,10 @@ public class Principal {
                 case "1":
                     break;
                 case "2":
+                    System.out.println("Introduce el ID del videojuego que quieres eliminar:");
+                    int id = sc.nextInt();
+                    VideojuegoDAO.eliminarPorId(id);
+                    sc.nextLine();
                     break;
                 case "3":
                     System.out.println("Saliendo del sistema...");
