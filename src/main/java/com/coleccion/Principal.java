@@ -8,14 +8,30 @@ public class Principal {
         Scanner sc = new Scanner(System.in);
         boolean usandoBaseDatos = true;
 
-        menu();
-        String respuesta = sc.nextLine();
+        while (usandoBaseDatos){
 
-        while (Integer.parseInt(respuesta) < 1 || Integer.parseInt(respuesta) > 3){
-            System.out.println("La respuesta debe de ser 1, 2 o 3");
-            respuesta = sc.nextLine();
+            menu();
+            String respuesta = sc.nextLine();
+
+            while (Integer.parseInt(respuesta) < 1 || Integer.parseInt(respuesta) > 3){
+                System.out.println("La respuesta debe de ser 1, 2 o 3");
+                respuesta = sc.nextLine();
+            }
+
+
+            switch (respuesta){
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    System.out.println("Saliendo del sistema...");
+                    usandoBaseDatos = false;
+                    break;
+            }
+
         }
-
+        System.out.println("Sistema cerrado");
     }
 
     public static void menu(){
