@@ -26,7 +26,7 @@ public class VideojuegoDAO {
      * @return true si se eliminó correctamente, false en caso contrario
      */
 
-    public boolean eliminarPorId(int id) {
+    public static boolean eliminarPorId(int id) {
         String sql = "DELETE FROM videojuegos WHERE id = ?";
 
         try (Connection conn = ConexionDB.getConnection();
