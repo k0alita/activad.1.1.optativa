@@ -20,11 +20,11 @@ public class ConexionDB {
 
     // Usuario de la base de datos.
     // Reemplaza "tu_usuario" por tu nombre de usuario de MySQL (p.ej., "root").
-    private static final String USER = "tu_usuario";
+    private static final String USER = "root";
 
     // Contraseña de la base de datos.
     // Reemplaza "tu_contraseña" por tu contraseña de MySQL.
-    private static final String PASS = "tu_contraseña";
+    private static final String PASS = "root";
 
     /**
      * Establece y devuelve una conexión con la base de datos.
