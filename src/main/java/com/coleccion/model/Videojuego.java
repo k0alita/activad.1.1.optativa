@@ -76,4 +76,10 @@ public class Videojuego {
     public void setValoracion(int valoracion) {
         this.valoracion = valoracion;
     }
+
+    @Override
+    public String toString() {
+        return String.format("| %-4d | %-25s | %-15s | %-15s | %-5d | %-2d/10 |",
+                id, titulo, genero, plataforma, anio, valoracion);
+    }
 }
