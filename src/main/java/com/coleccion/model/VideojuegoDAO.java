@@ -21,6 +21,34 @@ public class VideojuegoDAO {
     }
 
     /**
+     * Añade un nuevo juego a la base de datos
+     * @param v Objeto Videojuego a insertar
+     * @return true si se insertó correctamente, false en caso contrario
+     */
+    public static boolean insertar(Videojuego v) {
+        String sql = "INSERT INTO videojuegos (titulo, genero, plataforma, anio, valoracion) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = ConexionDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, v.getTitulo());
+            ps.setString(2, v.getGenero());
+            ps.setString(3, v.getPlataforma());
+            ps.setInt(4, v.getAnio());
+            ps.setInt(5, v.getValoracion());
+
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            // Manejamos la excepción si el título ya existe
+            if (e.getErrorCode() == 1062) {
+                System.out.println("Error: El título '" + v.getTitulo() + "' ya existe en la colección.");
+            } else {
+                System.out.println("Error al insertar el videojuego: " + e.getMessage());
+            }
+            return false;
+        }
+    }
+
+    /**
      * Elimina un juego por su ID
      * @param id ID del videojuego a eliminar
      * @return true si se eliminó correctamente, false en caso contrario

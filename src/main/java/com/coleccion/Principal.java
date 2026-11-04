@@ -1,12 +1,13 @@
 package com.coleccion;
 
 
+import com.coleccion.model.Videojuego;
 import com.coleccion.model.VideojuegoDAO;
 
 import java.util.Scanner;
 
 public class Principal {
-    static void main() {
+    static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean usandoBaseDatos = true;
 
@@ -23,6 +24,29 @@ public class Principal {
 
             switch (respuesta){
                 case "1":
+                    System.out.println("Ingrese el titulo del videojuego:");
+                    System.out.println("Titulo");
+                    String titulo = sc.nextLine();
+
+                    System.out.println("Genero");
+                    String genero = sc.nextLine();
+
+                    System.out.println("Plataforma");
+                    String plataforma = sc.nextLine();
+
+                    System.out.println("Año");
+                    int anio = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.println("Valoracion (1-10)");
+                    int  valoracion = sc.nextInt();
+                    sc.nextLine();
+
+                    Videojuego nuevo = new Videojuego(titulo,genero,plataforma,anio,valoracion);
+
+                    if (VideojuegoDAO.insertar(nuevo)){
+                        System.out.println("Videojuego insertado correctamente.");
+                    }
                     break;
                 case "2":
                     System.out.println("Introduce el ID del videojuego que quieres eliminar:");
