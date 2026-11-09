@@ -4,6 +4,7 @@ package com.coleccion;
 import com.coleccion.model.Videojuego;
 import com.coleccion.model.VideojuegoDAO;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Principal {
@@ -16,8 +17,8 @@ public class Principal {
             menu();
             String respuesta = sc.nextLine();
 
-            while (Integer.parseInt(respuesta) < 1 || Integer.parseInt(respuesta) > 3){
-                System.out.println("La respuesta debe de ser 1, 2 o 3");
+            while (Integer.parseInt(respuesta) < 1 || Integer.parseInt(respuesta) > 4){
+                System.out.println("La respuesta debe de ser 1, 2, 3 o 4");
                 respuesta = sc.nextLine();
             }
 
@@ -56,9 +57,17 @@ public class Principal {
                     break;
 
                 case "3":
+                    List<Videojuego> lista = VideojuegoDAO.listarTodos();
+                    if (lista.isEmpty()) {
+                        System.out.println("No hay videojuegos en la base de datos.");
+                    } else {
+                        System.out.println("Lista de videojuegos:");
+                        for (Videojuego videojuego : lista) {
+                            System.out.println(videojuego);
+                        }
+                    }
                     VideojuegoDAO.listarTodos();
-
-
+                    break;
                 case "4":
                     System.out.println("Saliendo del sistema...");
                     usandoBaseDatos = false;
