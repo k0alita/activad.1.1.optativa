@@ -54,7 +54,12 @@ public class Principal {
                     VideojuegoDAO.eliminarPorId(id);
                     sc.nextLine();
                     break;
+
                 case "3":
+                    VideojuegoDAO.listarTodos();
+
+
+                case "4":
                     System.out.println("Saliendo del sistema...");
                     usandoBaseDatos = false;
                     break;
@@ -68,6 +73,7 @@ public class Principal {
         System.out.println("Elije que quieres hacer:");
         System.out.println("1. Añadir un nuevo juego");
         System.out.println("2. Eliminar un juego por su ID");
-        System.out.println("3. Salir");
+        System.out.println("3. Mostrar base de datos");
+        System.out.println("4. Salir");
     }
 }

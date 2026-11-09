@@ -6,10 +6,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VideojuegoDAO {
 
-    private Videojuego mapearVideojuego(ResultSet rs) throws SQLException {
+    private static Videojuego mapearVideojuego(ResultSet rs) throws SQLException {
         return new Videojuego(
                 rs.getInt("id"),
                 rs.getString("titulo"),
@@ -67,5 +69,28 @@ public class VideojuegoDAO {
             System.out.println("Error al eliminar el videojuego: " + e.getMessage());
             return false;
         }
+    }
+
+
+    /**
+     * Muestra todos los juegos de la colección.
+     *
+     * @return Lista con todos los videojuegos ordenados por ID.
+     */
+    public static List<Videojuego> listarTodos() {
+        List<Videojuego> lista = new ArrayList<>();
+        String sql = "SELECT * FROM videojuegos ORDER BY id ASC";
+
+        try (Connection conn = ConexionDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                lista.add(mapearVideojuego(rs));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al listar los videojuegos: " + e.getMessage());
+        }
+        return lista;
     }
 }
