@@ -37,9 +37,7 @@ public class ConexionDB {
         Connection conn = null;
         try {
             // Abrir la conexión
-            System.out.println("Conectando a la base de datos...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            System.out.println("¡Conexión establecida con éxito!");
 
         } catch (SQLException se) {
             // Manejar errores para JDBC
